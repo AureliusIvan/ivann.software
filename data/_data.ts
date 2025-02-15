@@ -91,6 +91,3 @@ export const section3 = [
 ]
 
 export default sliderData;
-judulSlider;
-section2;
-section3

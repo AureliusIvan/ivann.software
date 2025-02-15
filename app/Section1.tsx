@@ -1,7 +1,7 @@
 import styles from '@styles/Home.module.css';
 
 import Image from 'next/image';
-import { sliderData, judulSlider } from '@data/_data';
+import { judulSlider, sliderData } from '@data/_data';
 import Marquee from "react-fast-marquee";
 
 export default function section() {
@@ -53,7 +53,7 @@ export default function section() {
                                                // Media query: atur gaya sesuai dengan lebar layar maksimum 770px
                                                ...(Data.id === 2
                                                    ? {
-                                                       '@media (max-width: 770px)': {
+                                                       '@media (maxWidth: 770px)': {
                                                            height: '29rem',
                                                        },
                                                    }

@@ -7,7 +7,7 @@ import Footer from "@components/Footer";
 
 export const metadata: Metadata = {
     title: 'Home',
-    description: 'Welcome to Next.js',
+    description: 'Hi, I am Ivan, a software engineer who loves to write about web development, technology, and life.',
 }
 
 export default function RootLayout(
@@ -20,9 +20,13 @@ export default function RootLayout(
     return (
         <html lang="en">
         <body className="bg-softRed m-0 p-0 relative">
-        <Navbar/>
-        {children}
-        <Footer/>
+        <main
+            id={'main-page'}
+        >
+            <Navbar/>
+            {children}
+            <Footer/>
+        </main>
         </body>
         </html>
     )
