@@ -1,58 +1,50 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 type Article = {
-    id: string
-    title: string
+    id: string;
+    title: string;
     slug: string;
-    status: string
-    createdAt: Date
-}
+    status: string;
+    createdAt: Date;
+};
 
 export default function ArticleList({articles}: { articles: Article[] }) {
-    const [selectedArticle, setSelectedArticle] = useState<string | null>(null)
-    const router = useRouter()
+    const router = useRouter();
 
     const handleViewArticle = (slug: string) => {
-        router.push(`/articles/${slug}`)
-    }
+        router.push(`/articles/${slug}`);
+    };
 
     return (
-        <div>
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead>Title</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Created At</TableHead>
-                        <TableHead>Actions</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {articles.map((article) => (
-                        <TableRow key={article.id}>
-                            <TableCell>{article.title}</TableCell>
-                            <TableCell>{article.status}</TableCell>
-                            <TableCell>{new Date(article.createdAt).toLocaleDateString()}</TableCell>
-                            <TableCell>
-                                <Button variant="outline" onClick={() => handleViewArticle(article.slug)} size="sm">
-                                    View Article
-                                </Button>
-                            </TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-            {selectedArticle && (
-                <div className="mt-4">
-                    <p>Editing article with ID: {selectedArticle}</p>
-                    {/* Add your edit form or modal here */}
-                </div>
-            )}
+        <div className="h-full">
+            {articles.map((article) => (
+                <article
+                    key={article.id}
+                    className="p-6 shadow-sm hover:shadow-md transition-shadow"
+                >
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
+                        <h2 className="text-2xl font-semibold mb-2 md:mb-0">
+                            {article.title}
+                        </h2>
+                        <span className="text-sm text-gray-500">
+                          {new Date(article.createdAt).toLocaleDateString()}
+                        </span>
+                    </div>
+
+                    <div className="mt-4">
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleViewArticle(article.slug)}
+                        >
+                            View Article
+                        </Button>
+                    </div>
+                </article>
+            ))}
         </div>
-    )
+    );
 }

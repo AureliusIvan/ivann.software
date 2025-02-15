@@ -63,10 +63,10 @@ export const sliderData = [
     },
 ]
 
-export const judulSlider = [
+export const sliderTitle = [
     {
         id: 1,
-        title: 'Design By Melz.',
+        title: 'Works by Ivan.',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus aliquet sem, non finibus lorem laoreet vel. Aliquam ex enim, imperdiet a sodales in, gravida nec eros. Aenean venenatis tincidunt orci, in eleifend mi tristique in. ',
     }
 ]

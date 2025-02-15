@@ -6,7 +6,7 @@ import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
 
 export const metadata: Metadata = {
-    title: 'Home',
+    title: 'Ivan - Software Engineer',
     description: 'Hi, I am Ivan, a software engineer who loves to write about web development, technology, and life.',
 }
 
@@ -20,7 +20,6 @@ export default function RootLayout(
     return (
         <main
             id={'main-page'}
-            className="bg-softRed m-0 p-0 relative"
         >
             <Navbar/>
             {children}

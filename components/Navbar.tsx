@@ -1,108 +1,91 @@
 "use client";
 
-import { useState } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@lib/utils";
+import { useCallback, useState } from "react";
+import { usePathname } from "next/navigation";
 import { lanceFont } from "@fonts/fonts";
+import { cn } from "@lib/utils";
+
+// Define nav items for mobile and desktop. For desktop,
+// we split them into two groups while keeping the labels and paths concise.
+const mobileNavItems = [
+    {label: "HOME", path: "/"},
+    {label: "ARTICLES", path: "/articles"},
+    {label: "GALLERY", path: "/gallery"},
+    {label: "CONTACT", path: "/contact"},
+];
+
+const desktopLeftNavItems = [
+    {label: "HOME", path: "/"},
+    {label: "ARTICLES", path: "/articles"},
+];
+
+const desktopRightNavItems = [
+    {label: "GALLERY", path: "/gallery"},
+    {label: "CONTACT", path: "/contact"},
+];
 
 const NavbarComponent = () => {
     const pathname = usePathname();
-    const [burgerOpen, setBurgerOpen] = useState(false);
+    const [navOpen, setNavOpen] = useState(false);
+
+    const handleNavToggle = () => {
+        setNavOpen((prev) => !prev);
+    };
+
+    // Helper to render a nav link.
+    // The styling varies between mobile (using larger text) and desktop.
+    const renderNavLink = useCallback((item: { label: string; path: string }, isMobile = false) => (
+        <Link
+            key={item.path}
+            href={item.path}
+            prefetch={true}
+            onClick={handleNavToggle}
+            className={cn(
+                `font-argentum-regular select-none hover:bg-softOrange hover:text-darkPink`,
+                isMobile ? "text-4xl pt-4 px-4" : "py-2 px-4",
+                pathname === item.path && "bg-softOrange text-darkPink"
+            )}
+        >
+            {item.label}
+        </Link>
+    ), [pathname]);
 
     return (
-        <section className={lanceFont.className}>
+        <section className={cn(lanceFont.className, `sticky top-0 z-40`)}>
+
             {/* Mobile Navigation */}
-            {burgerOpen && (
+            {navOpen && (
                 <div
-                    className="fixed flex justify-around items-center bg-darkPink opacity-75 w-full h-full z-50 md:hidden"
-                >
-                    <button className="absolute top-[20px] right-0 pb-3 pl-4 pr-4 m-2">
-                        <span
-                            className="text-4xl text-grayishRed"
-                            onClick={() => {
-                                setBurgerOpen(false);
-                            }}
-                        >
-                          x
-                        </span>
+                    className="fixed inset-0 flex flex-col items-center bg-darkPink opacity-85 backdrop-blur-3xl z-50 md:hidden">
+
+                    <button className="self-end p-4 m-2" onClick={handleNavToggle}>
+                        <span className="text-4xl text-grayishRed">x</span>
                     </button>
 
-                    <div
-                        className={cn(
-                            "absolute text-grayishRed h-1/2 justify-around items-center flex flex-col")}>
-                        <Link
-                            className={`select-none text-4xl hover:bg-softOrange hover:text-darkPink pt-4 px-4 ${
-                                pathname === "/" ? "bg-softOrange text-darkPink" : ""
-                            }`}
-                            href="/"
-                        >
-                            HOME
-                        </Link>
-                        <Link
-                            className={`select-none text-4xl hover:bg-softOrange hover:text-darkPink pt-4 px-4 ${
-                                pathname === "/articles"
-                                    ? "bg-softOrange text-darkPink"
-                                    : ""
-                            }`}
-                            href="/articles"
-                        >
-                            ARTICLES
-                        </Link>
-                        <Link
-                            className={`select-none text-4xl hover:bg-softOrange hover:text-darkPink pt-4 px-4 ${
-                                pathname === "/gallery"
-                                    ? "bg-softOrange text-darkPink"
-                                    : ""
-                            }`}
-                            href="/gallery"
-                        >
-                            GALLERY
-                        </Link>
-                        <Link
-                            className={`select-none text-4xl hover:bg-softOrange hover:text-darkPink pt-4 px-4 ${
-                                pathname === "/contact"
-                                    ? "bg-softOrange text-darkPink"
-                                    : ""
-                            }`}
-                            href="/contact"
-                        >
-                            CONTACT
-                        </Link>
+                    <div className="flex flex-col items-center justify-center h-full gap-4">
+                        {mobileNavItems.map((item) => renderNavLink(item, true))}
                     </div>
+
                 </div>
             )}
-            <nav className="fixed flex w-full justify-between items-center md:hidden mb-3 z-40 top-0">
-                <div className="absolute w-full h-16">
+
+            <nav className="fixed flex items-center justify-between w-full top-0 z-40 md:hidden mb-3">
+
+                {/* Logo */}
+                <Link className="p-4 mx-2 z-10" href="/">
                     <Image
-                        src="/images/ripped_textures/RectangleBig.png"
-                        alt="bg"
-                        fill={true}
-                    />
-                    <div className="absolute w-full h-5 top-14">
-                        <Image
-                            src="/images/ripped_textures/Ripped.svg"
-                            alt="bg"
-                            fill={true}
-                        />
-                    </div>
-                </div>
-                <Link className="p-4 mx-2 inline-block z-10" href="/" legacyBehavior>
-                    <Image
-                        src="/images/logo/Logo_Mobile.png"
+                        id={"logo-mobile-nav"}
+                        src="/images/logo/logo-mobile.png"
                         alt="Logo"
                         width={30}
                         height={30}
                     />
                 </Link>
-                <button
-                    className="p-4 mx-2 z-10"
-                    onClick={() => {
-                        setBurgerOpen(true);
-                    }}
-                >
-                    {!burgerOpen && (
+
+                <button className="p-4 mx-2 z-10" onClick={handleNavToggle}>
+                    {!navOpen && (
                         <Image
                             src="/images/icon/Burger.png"
                             alt="Burger"
@@ -111,68 +94,34 @@ const NavbarComponent = () => {
                         />
                     )}
                 </button>
-            </nav>
-            {/* Desktop Navigation */}
-            <nav
-                className="sticky to-0% hidden md:flex justify-between font-argentum-regular items-center text-grayishRed w-full h-20 mb-5 z-40">
-                <div className="absolute w-full h-20">
-                    <Image
-                        src="/images/ripped_textures/RectangleBig.png"
-                        alt="bg"
-                        fill={true}
-                    />
-                    <div className="absolute w-full h-10 top-16">
-                        <Image
-                            src="/images/ripped_textures/Ripped.svg"
-                            alt="bg"
-                            fill={true}
-                        />
+
+                {/* Ripped Paper Decoration */}
+                <div className="absolute w-full h-16">
+                    <Image src="/images/ripped_textures/RectangleBig.png" alt="bg" fill/>
+                    <div className="absolute w-full h-5 top-14">
+                        <Image src="/images/ripped_textures/Ripped.svg" alt="bg" fill/>
                     </div>
                 </div>
+
+            </nav>
+
+            {/* Desktop Navigation */}
+            <nav
+                className="hidden md:flex items-center justify-between text-grayishRed w-full h-20 bg-[#a4173e]">
+
+                {/* Ripped Paper Decoration */}
+                <div className="absolute w-full h-[3rem] top-16">
+                    <Image src="/images/ripped_textures/Ripped.svg" alt="ripped-paper-decoration-bottom" fill/>
+                </div>
+
                 <div className="w-1/3 flex justify-around z-10">
-                    <Link
-                        className={`select-none hover:bg-softOrange hover:text-darkPink py-2 px-4 ${
-                            pathname === "/" ? "bg-softOrange text-darkPink" : ""
-                        }`}
-                        href="/"
-                    >
-                        HOME
-                    </Link>
-                    <Link
-                        className={`select-none hover:bg-softOrange hover:text-darkPink py-2 px-4 ${
-                            pathname === "/articles" ? "bg-softOrange text-darkPink" : ""
-                        }`}
-                        href="/articles"
-                    >
-                        ARTICLES
-                    </Link>
+                    {desktopLeftNavItems.map((item) => renderNavLink(item))}
+                </div>
+                <div className="w-1/3 flex justify-center z-10">
+                    <h1 className="font-lanche text-4xl">Works by Ivan</h1>
                 </div>
                 <div className="w-1/3 flex justify-around z-10">
-                    <h1 className="font-lanche text-4xl">
-                        Works by Ivan
-                    </h1>
-                </div>
-                <div className="w-1/3 flex justify-around z-10">
-                    <Link
-                        className={`select-none hover:bg-softOrange hover:text-darkPink py-2 px-4 ${
-                            pathname === "/gallery"
-                                ? "bg-softOrange text-darkPink"
-                                : ""
-                        }`}
-                        href="/gallery"
-                    >
-                        GALLERY
-                    </Link>
-                    <Link
-                        className={`select-none hover:bg-softOrange hover:text-darkPink py-2 px-4 ${
-                            pathname === "/contact"
-                                ? "bg-softOrange text-darkPink"
-                                : ""
-                        }`}
-                        href="/contact"
-                    >
-                        CONTACT
-                    </Link>
+                    {desktopRightNavItems.map((item) => renderNavLink(item))}
                 </div>
             </nav>
         </section>
