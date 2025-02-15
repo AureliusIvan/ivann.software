@@ -5,7 +5,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AboutCard from "@components/AboutCard";
@@ -15,9 +14,6 @@ import { Pagination, Navigation } from "swiper/modules";
 const About: React.FC = () => {
     return (
         <>
-            <Head>
-                <title>DesignByMelz | About</title>
-            </Head>
             <section>
                 <div className="flex items-center justify-center mt-20">
                     <div className="bg-grayishRed w-16 h-px mx-4"></div>

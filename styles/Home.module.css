@@ -1,17 +1,17 @@
 /* section 1 */
 @font-face {
     font-family: 'lanche';
-    src: url('../public/font/lanche/Lanche.ttf') format('truetype');
+    src: url('../fonts/lanche/Lanche.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'argentum-sans-regular';
-    src: url('../public/font/argentum-sans/ArgentumSans-Regular.ttf') format('truetype');
+    src: url('../fonts/argentum-sans/ArgentumSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'argetum-sans-light';
-    src: url('../public/font/argentum-sans/ArgentumSans-Light.ttf') format('truetype');
+    src: url('../fonts/argentum-sans/ArgentumSans-Light.ttf') format('truetype');
 }
 
 .containerSec1 {

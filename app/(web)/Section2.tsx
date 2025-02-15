@@ -6,12 +6,12 @@ import Image from "next/image";
 export default function sect2() {
     return (
         <>
-            <section className="flex w-[100%] mt-[7rem] overflow-x-hidden max-lg:mt-[3rem] ">
+            <section className="flex w-[100%] mt-[7rem] overflow-x-hidden max-lg:mt-[3rem]">
 
                 <div
                     className="flex w-[90%] h-auto mb-[9rem] justify-between overflow-x-hidden max-lg:flex-col-reverse max-lg:justify-center max-lg:items-center max-lg:w-full max-lg:mb-[1rem] ">
 
-                    {/* gambar bagian kiri */}
+                    {/* Left site image content */}
                     <div className={styles.rectangle}>
                         <div id="rectangle26-container" className={styles.rectangle26Container}>
                             <svg xmlns="http://www.w3.org/2000/svg" className={styles.rectangle26} width="194"

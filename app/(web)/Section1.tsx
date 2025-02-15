@@ -5,7 +5,6 @@ import { judulSlider, sliderData } from '@data/_data';
 import Marquee from "react-fast-marquee";
 
 export default function section() {
-
     return (
         <>
             <section className="w-screen h-auto mt-[-1.5rem]" id='logos'>

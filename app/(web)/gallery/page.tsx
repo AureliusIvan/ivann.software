@@ -4,14 +4,13 @@ import "aos/dist/aos.css";
 
 import React, { useEffect, useState } from "react";
 import MasonryGrid from "@components/MasonryLayout";
-import Head from "next/head";
 import Image from "next/image";
 import style from "@styles/Gallery.module.css";
-import Content from "../../data/_content";
+import Content from "../../../data/_content";
 import GalleryButtons from "@components/GalleryButtons";
 import AOS from "aos";
 
-const Gallery: React.FC = () => {
+const GalleryPage: React.FC = () => {
     //button value handler
     const [selectedButton, setSelectedButton] = useState<number>(1);
 
@@ -53,7 +52,7 @@ const Gallery: React.FC = () => {
         }
     };
 
-    // Set the top cordinate to 0
+    // Set the top coordinate to 0
     // make scrolling smooth
     const scrollToTop = () => {
         window.scrollTo({
@@ -74,10 +73,7 @@ const Gallery: React.FC = () => {
     }, []);
 
     return (
-        <>
-            <Head>
-                <title>DesignbyMelz | Gallery</title>
-            </Head>
+        <section className={"bg-[#FEE3E1]"}>
             <div>
                 {isVisible && (
                     <div
@@ -88,14 +84,16 @@ const Gallery: React.FC = () => {
                     </div>
                 )}
             </div>
-            <div className="flex items-center justify-center mt-20">
+
+            <header className="flex items-center justify-center mt-20">
                 <div className="bg-grayishRed w-16 h-px mx-4"></div>
                 <h1 className="font-lanche text-2xl md:text-4xl text-grayishRed">
                     Gallery.
                 </h1>
                 <div className="bg-grayishRed w-16 h-px mx-4"></div>
-            </div>
-            <div className="container mx-auto mt-8 text-white">
+            </header>
+
+            <section className="container mx-auto mt-8 text-white">
                 <div className="mx-20 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                     <GalleryButtons
                         Id={1}
@@ -156,10 +154,11 @@ const Gallery: React.FC = () => {
                                     alt={item.title}
                                     width={0}
                                     height={0}
-                                    layout="responsive"
+                                    layout={"responsive"}
                                     className={style.image}
                                 />
-                                {/* untuk caption gambar */}
+
+                                {/* For individual image caption*/}
                                 <div key={index} className={style.desc}>
                                     <p key={index} className={style.p}>
                                         {item.desc}
@@ -169,9 +168,9 @@ const Gallery: React.FC = () => {
                         </div>
                     ))}
                 </MasonryGrid>
-            </div>
-        </>
+            </section>
+        </section>
     );
 };
 
-export default Gallery;
+export default GalleryPage;
