@@ -21,7 +21,7 @@ const About: React.FC = () => {
             <section>
                 <div className="flex items-center justify-center mt-20">
                     <div className="bg-grayishRed w-16 h-px mx-4"></div>
-                    <h1 className="font-lanche text-2xl md:text-4xl text-grayishRed">
+                    <h1 className={" font-lanche text-2xl md:text-4xl text-grayishRed"}>
                         About.
                     </h1>
                     <div className="bg-grayishRed w-16 h-px mx-4"></div>

@@ -72,13 +72,13 @@ const NavbarComponent = () => {
                 <Image
                     src="/images/ripped_textures/RectangleBig.png"
                     alt="bg"
-                    layout="fill"
+                    fill={true}
                 />
                 <div className="absolute w-full h-5 top-14">
                     <Image
                         src="/images/ripped_textures/Ripped.svg"
                         alt="bg"
-                        layout="fill"
+                        fill={true}
                     />
                 </div>
             </div>
@@ -113,13 +113,13 @@ const NavbarComponent = () => {
                 <Image
                     src="/images/ripped_textures/RectangleBig.png"
                     alt="bg"
-                    layout="fill"
+                    fill={true}
                 />
                 <div className="absolute w-full h-10 top-16">
                     <Image
                         src="/images/ripped_textures/Ripped.svg"
                         alt="bg"
-                        layout="fill"
+                        fill={true}
                     />
                 </div>
             </div>

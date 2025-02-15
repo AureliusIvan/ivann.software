@@ -19,6 +19,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@/*": [
+        "./*"
+      ],
       "@*": [
         "./*"
       ]
