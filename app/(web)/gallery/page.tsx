@@ -52,15 +52,6 @@ const GalleryPage: React.FC = () => {
         }
     };
 
-    // Set the top coordinate to 0
-    // make scrolling smooth
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
-
     useEffect(() => {
         window.addEventListener("scroll", toggleVisibility);
     }, []);
@@ -85,6 +76,7 @@ const GalleryPage: React.FC = () => {
 
             <section className="container mx-auto mt-8 text-white">
                 <div className="mx-20 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+
                     <GalleryButtons
                         Id={1}
                         ButtonName="ALL"
@@ -92,6 +84,7 @@ const GalleryPage: React.FC = () => {
                         onClick={handleButtonClick}
                         selected={selectedButton === 1}
                     />
+
                     <GalleryButtons
                         Id={2}
                         ButtonName="LOGO DESIGN"
@@ -99,6 +92,7 @@ const GalleryPage: React.FC = () => {
                         onClick={handleButtonClick}
                         selected={selectedButton === 2}
                     />
+
                     <GalleryButtons
                         Id={3}
                         ButtonName="MASCOT DESIGN"
@@ -106,6 +100,7 @@ const GalleryPage: React.FC = () => {
                         onClick={handleButtonClick}
                         selected={selectedButton === 3}
                     />
+
                     <GalleryButtons
                         Id={4}
                         ButtonName="PACKAGING DESIGN"
@@ -159,6 +154,7 @@ const GalleryPage: React.FC = () => {
                         </div>
                     ))}
                 </MasonryGrid>
+
             </section>
         </section>
     );
