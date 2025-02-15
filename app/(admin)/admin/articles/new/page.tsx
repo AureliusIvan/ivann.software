@@ -29,6 +29,7 @@ export default function NewArticlePage() {
                 },
                 body: JSON.stringify({title, slug, content, status}),
             })
+
             if (response.ok) {
                 alert("Article created successfully!")
                 router.push("/admin/articles")

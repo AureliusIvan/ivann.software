@@ -74,18 +74,8 @@ const GalleryPage: React.FC = () => {
 
     return (
         <section className={"bg-[#FEE3E1]"}>
-            <div>
-                {isVisible && (
-                    <div
-                        className="rounded-full text-8xl text-center select-none mr-2 mb-2 text-white bg-darkPink top-40 right-10 w-20 h-20 fixed"
-                        onClick={scrollToTop}
-                    >
-                        ^
-                    </div>
-                )}
-            </div>
 
-            <header className="flex items-center justify-center mt-20">
+            <header className="flex items-center justify-center">
                 <div className="bg-grayishRed w-16 h-px mx-4"></div>
                 <h1 className="font-lanche text-2xl md:text-4xl text-grayishRed">
                     Gallery.
@@ -123,15 +113,15 @@ const GalleryPage: React.FC = () => {
                         onClick={handleButtonClick}
                         selected={selectedButton === 4}
                     />
-                    <div className="lg:col-start-2 col-span-1">
-                        <GalleryButtons
-                            Id={5}
-                            ButtonName="PHOTOGRAPHY"
-                            imgSrc="/images/homePict/slider4.png"
-                            onClick={handleButtonClick}
-                            selected={selectedButton === 5}
-                        />
-                    </div>
+
+                    <GalleryButtons
+                        Id={5}
+                        ButtonName="PHOTOGRAPHY"
+                        imgSrc="/images/homePict/slider4.png"
+                        onClick={handleButtonClick}
+                        selected={selectedButton === 5}
+                    />
+
                     <GalleryButtons
                         Id={6}
                         ButtonName="OTHER"
@@ -139,6 +129,7 @@ const GalleryPage: React.FC = () => {
                         onClick={handleButtonClick}
                         selected={selectedButton === 6}
                     />
+
                 </div>
 
                 <MasonryGrid>
