@@ -1,8 +1,8 @@
 import styles from '@styles/Home.module.css';
 
 import Image from 'next/image';
-import { judulSlider, sliderData } from '@data/_data';
 import Marquee from "react-fast-marquee";
+import { judulSlider, sliderData } from '@data/_data';
 
 export default function section() {
     return (

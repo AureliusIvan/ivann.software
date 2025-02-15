@@ -18,16 +18,13 @@ export default function RootLayout(
     }
 ) {
     return (
-        <html lang="en">
-        <body className="bg-softRed m-0 p-0 relative">
         <main
             id={'main-page'}
+            className="bg-softRed m-0 p-0 relative"
         >
             <Navbar/>
             {children}
             <Footer/>
         </main>
-        </body>
-        </html>
     )
 }
