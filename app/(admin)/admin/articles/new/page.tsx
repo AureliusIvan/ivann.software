@@ -12,7 +12,7 @@ import TipTapEditor from "@/components/TipTapEditor"
 import { htmlToMarkdown, markdownToHtml } from "@/utils/markdownConverter"
 import { SidebarTrigger } from "@components/ui/sidebar";
 
-export default function NewArticle() {
+export default function NewArticlePage() {
     const router = useRouter()
     const [title, setTitle] = useState("")
     const [slug, setSlug] = useState("")
@@ -42,6 +42,7 @@ export default function NewArticle() {
     }
 
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
         const file = e.target.files?.[0]
         if (file) {
             const reader = new FileReader()
@@ -75,8 +76,13 @@ export default function NewArticle() {
                 </h1>
             </section>
 
-
             <form onSubmit={handleSubmit} className="space-y-4">
+
+                <div>
+                    <Label htmlFor="title">Image</Label>
+                    <Input id="image" type="file" accept="image/*" required/>
+                </div>
+
                 <div>
                     <Label htmlFor="title">Title</Label>
                     <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
@@ -91,6 +97,7 @@ export default function NewArticle() {
                     <Label htmlFor="content">Content</Label>
                     <TipTapEditor content={content} onChange={setContent}/>
                 </div>
+
                 <div>
                     <Label htmlFor="status">Status</Label>
                     <Select value={status} onValueChange={setStatus}>
@@ -103,19 +110,27 @@ export default function NewArticle() {
                         </SelectContent>
                     </Select>
                 </div>
+
                 <div className="flex gap-2">
+
                     <Button type="submit">Create Article</Button>
+
                     <Button type="button" variant="outline"
                             onClick={() => document.getElementById("markdown-upload")?.click()}>
                         Import Markdown
                     </Button>
+
                     <input id="markdown-upload" type="file" accept=".md" onChange={handleFileUpload}
                            className="hidden"/>
+
                     <Button type="button" variant="outline" onClick={handleDownloadMarkdown}>
                         Download as Markdown
                     </Button>
+
                 </div>
+
             </form>
+
         </div>
     )
 }

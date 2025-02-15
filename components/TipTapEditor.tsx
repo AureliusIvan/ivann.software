@@ -20,6 +20,7 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
                 lowlight,
             }),
         ],
+        immediatelyRender: false,
         content: content,
         onUpdate: ({editor}) => {
             onChange(editor.getHTML())
@@ -50,6 +51,7 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
 
     return (
         <div className="border border-input rounded-md p-2">
+
             <div className="mb-2 flex gap-2">
                 <Button
                     size="icon"
@@ -59,6 +61,7 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
                 >
                     <Bold className="h-4 w-4"/>
                 </Button>
+
                 <Button
                     size="icon"
                     variant="outline"
@@ -67,6 +70,7 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
                 >
                     <Italic className="h-4 w-4"/>
                 </Button>
+
                 <Button
                     size="icon"
                     variant="outline"
@@ -75,6 +79,7 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
                 >
                     <List className="h-4 w-4"/>
                 </Button>
+
                 <Button
                     size="icon"
                     variant="outline"
@@ -83,6 +88,7 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
                 >
                     <ListOrdered className="h-4 w-4"/>
                 </Button>
+
                 <Button
                     size="icon"
                     variant="outline"
@@ -91,11 +97,15 @@ const TipTapEditor = ({content, onChange}: { content: string; onChange: (content
                 >
                     <Code className="h-4 w-4"/>
                 </Button>
+
                 <Button size="icon" variant="outline" onClick={addImage}>
                     <ImageIcon className="h-4 w-4"/>
                 </Button>
+
             </div>
+
             <EditorContent editor={editor} className="prose max-w-none"/>
+
         </div>
     )
 }
