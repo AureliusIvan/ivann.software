@@ -11,8 +11,7 @@ export default async function ArticlesPage() {
     const articles = await getArticles()
 
     return (
-        <section className="container mx-auto px-4 py-8 min-h-screen">
-
+        <section className="w-full px-4 py-8 min-h-screen bg-[#FEE3E1]">
             <Suspense fallback={<Skeleton/>}>
                 <ArticleList articles={articles}/>
             </Suspense>
