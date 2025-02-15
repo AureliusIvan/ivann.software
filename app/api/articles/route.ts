@@ -12,6 +12,7 @@ export async function POST(request: Request) {
         const article = await prisma.article.create({
             data: {
                 title: body.title,
+                slug: body.slug,
                 content: body.content,
                 status: body.status,
             },

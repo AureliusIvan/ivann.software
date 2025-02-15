@@ -10,10 +10,12 @@ import { Label } from "@components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@components/ui/select"
 import TipTapEditor from "@/components/TipTapEditor"
 import { htmlToMarkdown, markdownToHtml } from "@/utils/markdownConverter"
+import { SidebarTrigger } from "@components/ui/sidebar";
 
 export default function NewArticle() {
     const router = useRouter()
     const [title, setTitle] = useState("")
+    const [slug, setSlug] = useState("")
     const [content, setContent] = useState("")
     const [status, setStatus] = useState("draft")
 
@@ -25,7 +27,7 @@ export default function NewArticle() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({title, content, status}),
+                body: JSON.stringify({title, slug, content, status}),
             })
             if (response.ok) {
                 alert("Article created successfully!")
@@ -65,12 +67,26 @@ export default function NewArticle() {
 
     return (
         <div className="space-y-6">
-            <h1 className="text-3xl font-bold">New Article</h1>
+
+            <section className={"flex items-center gap-4"}>
+                <SidebarTrigger/>
+                <h1 className="text-3xl font-bold">
+                    New Article
+                </h1>
+            </section>
+
+
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <Label htmlFor="title">Title</Label>
                     <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
                 </div>
+
+                <div>
+                    <Label htmlFor="slug">Slug</Label>
+                    <Input id="slug" value={slug} onChange={(e) => setSlug(e.target.value)} required/>
+                </div>
+
                 <div>
                     <Label htmlFor="content">Content</Label>
                     <TipTapEditor content={content} onChange={setContent}/>

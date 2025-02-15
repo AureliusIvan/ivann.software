@@ -16,16 +16,17 @@ const NavbarComponent = () => {
             {/* Mobile Navigation */}
             {burgerOpen && (
                 <div
-                    className="fixed flex justify-around items-center bg-darkPink opacity-75 w-full h-full z-50 md:hidden">
-                    <button className="absolute top-0 right-0 pb-3 pl-4 pr-4 m-2">
-                    <span
-                        className="text-4xl text-grayishRed"
-                        onClick={() => {
-                            setBurgerOpen(false);
-                        }}
-                    >
-                      x
-                    </span>
+                    className="fixed flex justify-around items-center bg-darkPink opacity-75 w-full h-full z-50 md:hidden"
+                >
+                    <button className="absolute top-[20px] right-0 pb-3 pl-4 pr-4 m-2">
+                        <span
+                            className="text-4xl text-grayishRed"
+                            onClick={() => {
+                                setBurgerOpen(false);
+                            }}
+                        >
+                          x
+                        </span>
                     </button>
 
                     <div
@@ -41,13 +42,13 @@ const NavbarComponent = () => {
                         </Link>
                         <Link
                             className={`select-none text-4xl hover:bg-softOrange hover:text-darkPink pt-4 px-4 ${
-                                pathname === "/about"
+                                pathname === "/articles"
                                     ? "bg-softOrange text-darkPink"
                                     : ""
                             }`}
-                            href="/about"
+                            href="/articles"
                         >
-                            ABOUT
+                            ARTICLES
                         </Link>
                         <Link
                             className={`select-none text-4xl hover:bg-softOrange hover:text-darkPink pt-4 px-4 ${
@@ -139,11 +140,11 @@ const NavbarComponent = () => {
                     </Link>
                     <Link
                         className={`select-none hover:bg-softOrange hover:text-darkPink py-2 px-4 ${
-                            pathname === "/about" ? "bg-softOrange text-darkPink" : ""
+                            pathname === "/articles" ? "bg-softOrange text-darkPink" : ""
                         }`}
-                        href="/about"
+                        href="/articles"
                     >
-                        ABOUT
+                        ARTICLES
                     </Link>
                 </div>
                 <div className="w-1/3 flex justify-around z-10">
