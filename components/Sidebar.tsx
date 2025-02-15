@@ -12,6 +12,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { UserButton } from "@clerk/nextjs";
 
 const items = [
     {
@@ -39,6 +40,7 @@ export default function Sidebar() {
                     <SidebarGroupLabel>Navigation</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
+                            <UserButton/>
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
