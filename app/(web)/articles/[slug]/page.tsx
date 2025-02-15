@@ -2,12 +2,8 @@
 
 import prisma from "@lib/prisma";
 
-interface Params {
-    slug: string;
-}
-
-export default async function Page({params}: { params: Params }) {
-    const {slug} = params;
+export default async function Page({params}: { params: Promise<{ slug: string }> }) {
+    const slug = (await params).slug;
 
     // Fetch the post data from the database
     const post = await prisma.article.findUnique({
