@@ -152,8 +152,8 @@
    -------------------------------------------------------------------------- */
 .mySwiper .swiper-button-next,
 .mySwiper .swiper-button-prev {
-    background-color: #f35578;
-    color: #FEE3E1;
+    background-color: #1a2332;
+    color: #e2e8f0;
     font-size: 24px;
     border-radius: 50%;
     width: 20px;
@@ -198,10 +198,10 @@
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
-    --color-darkPink: #A4183F;
-    --color-softRed: #F35578;
-    --color-softOrange: #FDD3C4;
-    --color-grayishRed: #FEE3E1;
+    --color-darkPink: #2f4f4f;
+    --color-softRed: #1a2332;
+    --color-softOrange: #4a5568;
+    --color-grayishRed: #2d3748;
 
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
