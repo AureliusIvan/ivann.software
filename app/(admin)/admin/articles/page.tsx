@@ -1,5 +1,3 @@
-"use server";
-
 import Link from "next/link"
 import { Button } from "@components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@components/ui/table"
@@ -31,7 +29,7 @@ export default async function ArticlesList() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {articles.map((article) => (
+                    {articles.map((article: any) => (
                         <TableRow key={article.id}>
                             <TableCell>{article.title}</TableCell>
                             <TableCell>{article.status}</TableCell>

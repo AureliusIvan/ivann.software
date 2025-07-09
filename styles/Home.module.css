@@ -9,7 +9,7 @@
 .titleSec1 {
     width: 19.937rem;
     font-size: 4.375rem;
-    color: #FEE3E1;
+    color: #e2e8f0;
     font-weight: 400;
     font-family: 'lanche', serif;
     font-style: normal;
@@ -129,13 +129,13 @@
     width: 5rem;
     height: 28.4375rem;
     flex-shrink: 0;
-    background: #FDD3C4;
+    background: #4a5568;
     margin-right: -4.3rem;
 }
 
 .descText {
     width: 34.4vw;
-    color: #FEE3E1;
+    color: #e2e8f0;
     font-family: 'lanche';
     margin-bottom: 1rem;
     margin-top: 5rem;
@@ -147,7 +147,7 @@
 
 .authorText {
     width: 34.4vw;
-    color: #FEE3E1;
+    color: #e2e8f0;
     font-family: 'argetum-sans-light';
     font-style: normal;
     font-size: 1rem;

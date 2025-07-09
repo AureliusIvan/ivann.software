@@ -1,5 +1,3 @@
-"use server";
-
 import prisma from "@lib/prisma";
 
 export default async function Page({params}: { params: Promise<{ slug: string }> }) {
@@ -30,13 +28,13 @@ export default async function Page({params}: { params: Promise<{ slug: string }>
                 <article className="bg-white rounded-lg shadow p-6">
                     <header className="mb-6">
                         <h1 className="text-4xl font-bold text-gray-800 mb-2">
-                            {post.title}
+                            {(post as any)?.title || 'No title'}
                         </h1>
-                        <p className="text-sm text-gray-500">Slug: {post.slug}</p>
+                        <p className="text-sm text-gray-500">Slug: {(post as any)?.slug || 'No slug'}</p>
                     </header>
                     <section
                         className="prose prose-indigo max-w-none"
-                        dangerouslySetInnerHTML={{__html: post.content}}
+                        dangerouslySetInnerHTML={{__html: (post as any)?.content || ''}}
                     />
                 </article>
             </div>

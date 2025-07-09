@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface ContactCardProps {
     title: string;
@@ -23,7 +24,7 @@ const ContactCard: React.FC<ContactCardProps> = (props) => {
         ">
 
             <h1 className="font-lanche text-3xl hidden md:block">{props.title}</h1>
-            <img src={props.imageSrc} alt="" className="mx-auto  w-8 md:w-12 md:mt-8"/>
+            <Image src={props.imageSrc} alt={props.title} width={48} height={48} className="mx-auto  w-8 md:w-12 md:mt-8"/>
             <p className="text-sm md:mt-8 md:text-base">{props.contact}</p>
         </div>
     )

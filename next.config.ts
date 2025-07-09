@@ -14,13 +14,22 @@ const nextConfig: NextConfig = {
                 '.mjs',
                 '.json',
             ],
-            // rules: {
-            //     '*.svg': {
-            //         loaders: ['@svgr/webpack'],
-            //         as: '*.js',
-            //     },
-            // }
         }
+    },
+    // Skip admin routes during build
+    pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+    async headers() {
+        return [
+            {
+                source: '/admin/:path*',
+                headers: [
+                    {
+                        key: 'X-Robots-Tag',
+                        value: 'noindex, nofollow'
+                    }
+                ]
+            }
+        ]
     }
 }
 

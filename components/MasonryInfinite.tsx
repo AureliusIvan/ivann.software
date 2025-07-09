@@ -1,6 +1,7 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Masonry from "react-masonry-css";
+import Image from "next/image";
 import content from "@data/_content";
 
 interface Image {
@@ -15,7 +16,7 @@ const InfiniteScrollMasonry: React.FC = () => {
     const pageSize = 10;
     const totalImages = content.length;
 
-    const fetchImages = () => {
+    const fetchImages = useCallback(() => {
         setLoading(true);
         const newDisplayImages = [...displayImages];
         for (let i = 0; i < pageSize; i++) {
@@ -23,11 +24,11 @@ const InfiniteScrollMasonry: React.FC = () => {
         }
         setDisplayImages(newDisplayImages);
         setLoading(false);
-    };
+    }, [displayImages, pageSize, totalImages]);
 
     useEffect(() => {
         fetchImages();
-    }, []);
+    }, [fetchImages]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -45,7 +46,7 @@ const InfiniteScrollMasonry: React.FC = () => {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [loading]);
+    }, [loading, fetchImages]);
 
     return (
         <div>
@@ -60,7 +61,7 @@ const InfiniteScrollMasonry: React.FC = () => {
             >
                 {displayImages.map((image, index) => (
                     <div key={index} className="">
-                        <img src={image.imageSrc} alt={image.title}/>
+                        <Image src={image.imageSrc} alt={image.title} width={400} height={300} />
                     </div>
                 ))}
             </Masonry>
